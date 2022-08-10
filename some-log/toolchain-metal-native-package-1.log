@@ -1,0 +1,82 @@
+make -C modules/freedom-binutils-metal native-package BINDIR_PREFIX=/home/yexicong/work/freedom-tools/ OBJDIR_PREFIX=/home/yexicong/work/freedom-tools/ EXTRA_OPTION= EXTRA_SUFFIX=
+make[1]: Entering directory '/home/yexicong/work/freedom-tools/modules/freedom-binutils-metal'
+make[1]: Nothing to be done for 'native-package'.
+make[1]: Leaving directory '/home/yexicong/work/freedom-tools/modules/freedom-binutils-metal'
+make -C modules/freedom-gcc-metal native-package BINDIR_PREFIX=/home/yexicong/work/freedom-tools/ OBJDIR_PREFIX=/home/yexicong/work/freedom-tools/ EXTRA_OPTION= EXTRA_SUFFIX=
+make[1]: Entering directory '/home/yexicong/work/freedom-tools/modules/freedom-gcc-metal'
+make[1]: Nothing to be done for 'native-package'.
+make[1]: Leaving directory '/home/yexicong/work/freedom-tools/modules/freedom-gcc-metal'
+make -C modules/freedom-gdb-metal native-package BINDIR_PREFIX=/home/yexicong/work/freedom-tools/ OBJDIR_PREFIX=/home/yexicong/work/freedom-tools/ EXTRA_OPTION= EXTRA_SUFFIX=
+make[1]: Entering directory '/home/yexicong/work/freedom-tools/modules/freedom-gdb-metal'
+tclsh ../../scripts/check-naming-and-version-syntax.tcl "Bare Metal GDB" "riscv64-unknown-elf-gdb" "10.1.0" "2020.12.8"
+rm -rf /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14
+mkdir -p /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14
+rm -rf /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb
+mkdir -p /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb
+rm -rf /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/
+mkdir -p /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/
+git log > /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/riscv64-unknown-elf-gdb-git-commit.log
+git remote -v > /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/riscv64-unknown-elf-gdb-git-remote.log
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/; curl -L -f -s -o expat-2.2.0.tar.bz2 https://github.com/libexpat/libexpat/releases/download/R_2_2_0/expat-2.2.0.tar.bz2
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/; tar -xf expat-2.2.0.tar.bz2
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/; mv expat-2.2.0 expat
+mkdir -p /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/python
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/; curl -L -f -s -o python-3.7.7-x86_64-linux-ubuntu14.tar.gz https://github.com/sifive/freedom-tools-resources/releases/download/v0-test1/python-3.7.7-x86_64-linux-ubuntu14.tar.gz
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/python; tar -xf /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/python-3.7.7-x86_64-linux-ubuntu14.tar.gz
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/; rm python-3.7.7-x86_64-linux-ubuntu14.tar.gz
+cp patches/pyconfig-x86_64-apple-darwin.sh /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/python
+cp patches/pyconfig-x86_64-linux-centos6.sh /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/python
+cp patches/pyconfig-x86_64-linux-ubuntu14.sh /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/python
+cp patches/pyconfig-x86_64-w64-mingw32.sh /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/python
+git clone --single-branch --branch sifive-gdb-rvv-1.0.x-zfh-rvb-with-sim https://@github.com/sifive/riscv-binutils-gdb.git /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb//riscv-gdb
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb//riscv-gdb && git checkout --detach 1ac8c2ffcb4a0a98d0597e71f9313352bda11ee3
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb//riscv-gdb && git submodule update --init --recursive
+sed -E -i -f patches/python-c-gdb.sed /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb//riscv-gdb/gdb/python/python.c
+mkdir -p /home/yexicong/work/freedom-tools/bin/
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/; tar --dereference --hard-dereference -c riscv-gdb | gzip > /home/yexicong/work/freedom-tools/bin/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14.src.tar.gz
+date > /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/source.stamp
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/expat/; ./configure --prefix=/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14 --host=x86_64-linux-gnu &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/expat-make-configure.log
+make -C /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/expat/ buildlib &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/expat-make-buildlib.log
+make -C /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/expat/ -j1 installlib &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/expat-make-installlib.log
+rm -f /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/lib/libexpat*.dylib*
+rm -f /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/lib/libexpat*.so*
+rm -f /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/lib64/libexpat*.so*
+date > /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/expat/build.stamp
+rm -rf /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/
+mkdir -p /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/
+# Workaround for CentOS random build fail issue
+#
+# Corresponding bugzilla entry on upstream:
+# https://sourceware.org/bugzilla/show_bug.cgi?id=22941
+touch /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/riscv-gdb/intl/plural.c
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/ && CC_FOR_TARGET=riscv64-unknown-elf-gcc /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/riscv-gdb/configure \
+	--target=riscv64-unknown-elf \
+	--host=x86_64-linux-gnu \
+	--prefix=/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14 \
+	--with-pkgversion="SiFive GDB-Metal 10.1.0-2020.12.8" \
+	--with-bugurl="https://github.com/sifive/freedom-tools/issues" \
+	--disable-werror \
+	--with-python=no \
+	--enable-gdb \
+	--disable-gas \
+	--disable-binutils \
+	--disable-ld \
+	--disable-gold \
+	--disable-gprof \
+	--with-included-gettext \
+	--with-mpc=no \
+	--with-mpfr=no \
+	--with-gmp=no \
+	--with-expat=yes \
+	--with-guile=no \
+	CFLAGS="-O2" \
+	CXXFLAGS="-O2" &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/build-gdb-make-configure.log
+make -C /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/ &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/build-gdb-make-build.log
+make -C /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/ -j1 install install-pdf install-html &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/build-gdb-make-install.log
+rm -f /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/share/doc/gdb/frame-apply.html
+tclsh ../../scripts/dyn-lib-check-x86_64-linux-ubuntu14.tcl /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/bin/riscv64-unknown-elf-gdb
+Checking dynamic library usage for: /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/bin/riscv64-unknown-elf-gdb
+  Illegal library used: libncursesw.so.6 => /lib/x86_64-linux-gnu/libncursesw.so.6 (0x00007f61af196000)
+  Illegal library used: libtinfo.so.6 => /lib/x86_64-linux-gnu/libtinfo.so.6 (0x00007f61af164000)
+  Illegal library used: liblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x00007f61af139000)
+make[1]: Leaving directory '/home/yexicong/work/freedom-tools/modules/freedom-gdb-metal'

@@ -1,7 +1,7 @@
 include ../../scripts/base_toolchain_metadata.mk
 
 # Git repos, branches, commits and folders to get source code for the tool we are building
-RISCV_BINUTILS_GITURL := git@github.com:sifive/riscv-binutils-gdb.git
+RISCV_BINUTILS_GITURL := https://github.com/sifive/riscv-binutils-gdb.git
 RISCV_BINUTILS_BRANCH := sifive-rvv-1.0.x-zfh-rvb
 RISCV_BINUTILS_COMMIT := 75d2236ce26a3048f52bbd5186602e27bd635e2b
 RISCV_BINUTILS_FOLDER := riscv-binutils

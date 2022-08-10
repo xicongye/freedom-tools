@@ -31,5 +31,5 @@ $(OBJDIR)/%/build/$(PACKAGE_HEADING)/build-binutils/support.stamp: \
 		$($($@_TARGET)-binutils-configure) \
 		CFLAGS="-O2" \
 		CXXFLAGS="-O2" &>$($@_BUILDLOG)/build-binutils-make-configure.log
-	$(MAKE) -C $(dir $@) &>$($@_BUILDLOG)/build-binutils-make-build.log
+	cd $(dir $@); make -j$$(nproc) &>$($@_BUILDLOG)/build-binutils-make-build.log
 	date > $@

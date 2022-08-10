@@ -1,0 +1,76 @@
+make -C modules/freedom-binutils-metal native-package BINDIR_PREFIX=/home/yexicong/work/freedom-tools/ OBJDIR_PREFIX=/home/yexicong/work/freedom-tools/ EXTRA_OPTION= EXTRA_SUFFIX=
+make[1]: Entering directory '/home/yexicong/work/freedom-tools/modules/freedom-binutils-metal'
+make[1]: Nothing to be done for 'native-package'.
+make[1]: Leaving directory '/home/yexicong/work/freedom-tools/modules/freedom-binutils-metal'
+make -C modules/freedom-gcc-metal native-package BINDIR_PREFIX=/home/yexicong/work/freedom-tools/ OBJDIR_PREFIX=/home/yexicong/work/freedom-tools/ EXTRA_OPTION= EXTRA_SUFFIX=
+make[1]: Entering directory '/home/yexicong/work/freedom-tools/modules/freedom-gcc-metal'
+make[1]: Nothing to be done for 'native-package'.
+make[1]: Leaving directory '/home/yexicong/work/freedom-tools/modules/freedom-gcc-metal'
+make -C modules/freedom-gdb-metal native-package BINDIR_PREFIX=/home/yexicong/work/freedom-tools/ OBJDIR_PREFIX=/home/yexicong/work/freedom-tools/ EXTRA_OPTION= EXTRA_SUFFIX=
+make[1]: Entering directory '/home/yexicong/work/freedom-tools/modules/freedom-gdb-metal'
+rm -rf /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/
+mkdir -p /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/
+# Workaround for CentOS random build fail issue
+#
+# Corresponding bugzilla entry on upstream:
+# https://sourceware.org/bugzilla/show_bug.cgi?id=22941
+touch /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/riscv-gdb/intl/plural.c
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/ && CC_FOR_TARGET=riscv64-unknown-elf-gcc /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/riscv-gdb/configure \
+	--target=riscv64-unknown-elf \
+	--host=x86_64-linux-gnu \
+	--prefix=/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14 \
+	--with-pkgversion="SiFive GDB-Metal 10.1.0-2020.12.8" \
+	--with-bugurl="https://github.com/sifive/freedom-tools/issues" \
+	--disable-werror \
+	--with-python=no \
+	--enable-gdb \
+	--disable-gas \
+	--disable-binutils \
+	--disable-ld \
+	--disable-gold \
+	--disable-gprof \
+	--with-included-gettext \
+	--with-mpc=no \
+	--with-mpfr=no \
+	--with-gmp=no \
+	--with-expat=yes \
+	--with-guile=no \
+	CFLAGS="-O2" \
+	CXXFLAGS="-O2" &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/build-gdb-make-configure.log
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/; make -j$(nproc) &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/build-gdb-make-build.log
+make -C /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/ -j1 install install-pdf install-html &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/build-gdb-make-install.log
+rm -f /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/share/doc/gdb/frame-apply.html
+date > /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb/build.stamp
+rm -rf /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb-py/
+mkdir -p /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb-py/
+# Workaround for CentOS random build fail issue
+#
+# Corresponding bugzilla entry on upstream:
+# https://sourceware.org/bugzilla/show_bug.cgi?id=22941
+touch /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/riscv-gdb/intl/plural.c
+cd /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb-py/ && CC_FOR_TARGET=riscv64-unknown-elf-gcc /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/riscv-gdb/configure \
+	--target=riscv64-unknown-elf \
+	--host=x86_64-linux-gnu \
+	--prefix=/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14 \
+	--with-pkgversion="SiFive GDB-Metal 10.1.0-2020.12.8" \
+	--with-bugurl="https://github.com/sifive/freedom-tools/issues" \
+	--disable-werror \
+	--with-python="/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/install/riscv64-unknown-elf-gdb-10.1.0-2020.12.8-x86_64-linux-ubuntu14/python/pyconfig-x86_64-linux-ubuntu14.sh" \
+	--program-prefix="riscv64-unknown-elf-" \
+	--program-suffix="-py" \
+	--enable-gdb \
+	--disable-gas \
+	--disable-binutils \
+	--disable-ld \
+	--disable-gold \
+	--disable-gprof \
+	--with-included-gettext \
+	--with-mpc=no \
+	--with-mpfr=no \
+	--with-gmp=no \
+	--with-expat=yes \
+	--with-guile=no \
+	CFLAGS="-O2" \
+	CXXFLAGS="-O2" &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/build-gdb-py-make-configure.log
+make -C /home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/build/riscv64-unknown-elf-gdb/build-gdb-py/ &>/home/yexicong/work/freedom-tools/obj/x86_64-linux-ubuntu14/buildlog/riscv64-unknown-elf-gdb/build-gdb-py-make-build.log
+make[1]: Leaving directory '/home/yexicong/work/freedom-tools/modules/freedom-gdb-metal'

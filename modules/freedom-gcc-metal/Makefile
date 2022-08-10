@@ -307,7 +307,7 @@ $(OBJDIR)/%/build/$(PACKAGE_HEADING)/build-gcc-stage1/build.stamp: \
 		CXXFLAGS="-O2" \
 		CFLAGS_FOR_TARGET="-Os $(BARE_METAL_CFLAGS_FOR_TARGET)" \
 		CXXFLAGS_FOR_TARGET="-Os $(BARE_METAL_CXXFLAGS_FOR_TARGET)" &>$($@_BUILDLOG)/build-gcc-stage1-make-configure.log
-	$(MAKE) -C $(dir $@) all-gcc &>$($@_BUILDLOG)/build-gcc-stage1-make-build.log
+	cd $(dir $@); make all-gcc -j$$(nproc) &>$($@_BUILDLOG)/build-gcc-stage1-make-build.log
 	$(MAKE) -C $(dir $@) -j1 install-gcc &>$($@_BUILDLOG)/build-gcc-stage1-make-install.log
 	date > $@
 
@@ -330,7 +330,7 @@ $(OBJDIR)/%/build/$(PACKAGE_HEADING)/build-newlib/build.stamp: \
 		--enable-newlib-register-fini \
 		CFLAGS_FOR_TARGET="-O2 -D_POSIX_MODE $(BARE_METAL_CFLAGS_FOR_TARGET)" \
 		CXXFLAGS_FOR_TARGET="-O2 -D_POSIX_MODE $(BARE_METAL_CXXFLAGS_FOR_TARGET)" &>$($@_BUILDLOG)/build-newlib-make-configure.log
-	$(MAKE) -C $(dir $@) &>$($@_BUILDLOG)/build-newlib-make-build.log
+	cd $(dir $@); make -j$$(nproc) &>$($@_BUILDLOG)/build-newlib-make-build.log
 	$(MAKE) -C $(dir $@) -j1 install &>$($@_BUILDLOG)/build-newlib-make-install.log
 # These install multiple copies of the same docs into the same destination
 # for a multilib build.  So we must not parallelize them.
@@ -364,7 +364,7 @@ $(OBJDIR)/%/build/$(PACKAGE_HEADING)/build-newlib-nano/build.stamp: \
 		--disable-nls \
 		CFLAGS_FOR_TARGET="-Os -ffunction-sections -fdata-sections $(BARE_METAL_CFLAGS_FOR_TARGET)" \
 		CXXFLAGS_FOR_TARGET="-Os -ffunction-sections -fdata-sections $(BARE_METAL_CXXFLAGS_FOR_TARGET)" &>$($@_BUILDLOG)/build-newlib-nano-make-configure.log
-	$(MAKE) -C $(dir $@) &>$($@_BUILDLOG)/build-newlib-nano-make-build.log
+	cd $(dir $@); make -j$$(nproc) &>$($@_BUILDLOG)/build-newlib-nano-make-build.log
 	$(MAKE) -C $(dir $@) -j1 install &>$($@_BUILDLOG)/build-newlib-nano-make-install.log
 	date > $@
 
@@ -447,7 +447,7 @@ $(OBJDIR)/%/build/$(PACKAGE_HEADING)/build-gcc-stage2/build.stamp: \
 		CXXFLAGS="-O2" \
 		CFLAGS_FOR_TARGET="-Os $(BARE_METAL_CFLAGS_FOR_TARGET)" \
 		CXXFLAGS_FOR_TARGET="-Os $(BARE_METAL_CXXFLAGS_FOR_TARGET)" &>$($@_BUILDLOG)/build-gcc-stage2-make-configure.log
-	$(MAKE) -C $(dir $@) &>$($@_BUILDLOG)/build-gcc-stage2-make-build.log
+	cd $(dir $@); make -j$$(nproc) &>$($@_BUILDLOG)/build-gcc-stage2-make-build.log
 	$(MAKE) -C $(dir $@) -j1 install install-pdf install-html &>$($@_BUILDLOG)/build-gcc-stage2-make-install.log
 	tclsh ../../scripts/dyn-lib-check-$($@_TARGET).tcl $(abspath $($@_INSTALL))/bin/riscv64-unknown-elf-c++
 	tclsh ../../scripts/dyn-lib-check-$($@_TARGET).tcl $(abspath $($@_INSTALL))/bin/riscv64-unknown-elf-g++

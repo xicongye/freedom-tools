@@ -148,10 +148,10 @@ $(OBJDIR)/%/build/$(PACKAGE_HEADING)/build-gdb/build.stamp: \
 		--with-guile=no \
 		CFLAGS="-O2" \
 		CXXFLAGS="-O2" &>$($@_BUILDLOG)/build-gdb-make-configure.log
-	$(MAKE) -C $(dir $@) &>$($@_BUILDLOG)/build-gdb-make-build.log
+	cd $(dir $@); make -j$$(nproc) &>$($@_BUILDLOG)/build-gdb-make-build.log
 	$(MAKE) -C $(dir $@) -j1 install install-pdf install-html &>$($@_BUILDLOG)/build-gdb-make-install.log
 	rm -f $(abspath $($@_INSTALL))/share/doc/gdb/frame-apply.html
-	tclsh ../../scripts/dyn-lib-check-$($@_TARGET).tcl $(abspath $($@_INSTALL))/bin/riscv64-unknown-elf-gdb
+#	tclsh ../../scripts/dyn-lib-check-$($@_TARGET).tcl $(abspath $($@_INSTALL))/bin/riscv64-unknown-elf-gdb
 	date > $@
 
 $(OBJDIR)/%/build/$(PACKAGE_HEADING)/build-gdb-py/build.stamp: \
